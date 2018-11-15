@@ -1,9 +1,9 @@
 /*Hello thanks for looking at my project
 You can view my other projects at my GitHub, Pagaley12
 If you find any issues just make an error or let me know.*/
-
 #include<iostream>
 #include<fstream>
+#include <string>
 
 using namespace std;
 
@@ -14,28 +14,33 @@ int input(istream& in=cin)
 	return x;
 }
 
+void createAndPrintFace (const string & str1){ //Function Creates a Face
+    /*int board [3][3]; //creates a 3*3 matrix or a 2d array.
+
+	for(int i=0; i<3; i++)    //This loops on the rows.
+	{
+		for(int j=0; j<3; j++) //This loops on the columns
+		{
+			board[i][j] = input(); 
+		}
+	}
+
+    for(int i=0; i<3; i++)    //This loops on the rows.
+    {
+        for(int j=0; j<3; j++) //This loops on the columns
+        {
+            cout << board[i][j]  << "  ";
+        }
+        cout << endl;
+    }*/
+    cout <<str1 << endl;
+}
+
 int main()
 {
-	int board[9][9]; //creates a 9*9 matrix or a 2d array.
+    std::string myString("HelloWorld");
+    createAndPrintFace("Hello World");
 
-	for(int i=0; i<9; i++)    //This loops on the rows.
-	{
-		for(int j=0; j<9; j++) //This loops on the columns
-		{
-			board[i][j] = input(); //you can also connect to the file
-			//and place the name of your ifstream in the input after opening the file will
-			//let you read from the file.
-		}
-	}
-
-	for(int i=0; i<9; i++)    //This loops on the rows.
-	{
-		for(int j=0; j<9; j++) //This loops on the columns
-		{
-			cout << board[i][j]  << "  ";
-		}
-		cout << endl;
-	}
 }
 
 
@@ -43,9 +48,16 @@ int main()
 
 
 
-
-
-
+/* Code To Print an Array
+for(int i=0; i<3; i++)    //This loops on the rows.
+    {
+        for(int j=0; j<3; j++) //This loops on the columns
+        {
+            cout << board[i][j]  << "  ";
+        }
+        cout << endl;
+    }
+*/
 
 
 
