@@ -15,6 +15,22 @@ int input(istream& in=cin)
 }
 
 void createAndPrintFace (const string & str1){ //Function Creates a Face
+    if(str1 == "Front"){//Code for Front Face
+        int frontFace [3][3]; //creates a 3*3 matrix or a 2d array.
+    
+    }else if(str1 == "Back"){//Code for Back Face
+        cout <<"Back" <<endl;
+    } else if(str1 == "Up"){//Code for Upper Face
+        cout <<"Up" <<endl;
+    }else if(str1 == "Down"){//Code for Down Face
+        cout <<"Down" <<endl;
+    }else if(str1 == "Left"){//Code for Left Face
+        cout <<"Left" <<endl;
+    }else if(str1 == "Right"){//Code for Right Face
+        cout<<"Right" <<endl;
+    }
+    
+    
     /*int board [3][3]; //creates a 3*3 matrix or a 2d array.
 
 	for(int i=0; i<3; i++)    //This loops on the rows.
@@ -31,16 +47,14 @@ void createAndPrintFace (const string & str1){ //Function Creates a Face
         {
             cout << board[i][j]  << "  ";
         }
-        cout << endl;
+        cout << <<endl;
     }*/
-    cout <<str1 << endl;
+    
 }
 
 int main()
 {
-    std::string myString("HelloWorld");
-    createAndPrintFace("Hello World");
-
+    createAndPrintFace("Front");
 }
 
 
