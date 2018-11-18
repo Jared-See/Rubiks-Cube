@@ -7,17 +7,38 @@ If you find any issues just make an error or let me know.*/
 
 using namespace std;
 
-int input(istream& in=cin)
+int input(istream& in=cin)//Allows User Input
 {
 	int x;
 	in >> x;
 	return x;
 }
 
-void createAndPrintFace (const string & str1){ //Function Creates a Face
+
+
+
+void printFace(int matrix[3][3]){//Prints Out A Matrix
+    for(int i=0; i<3; i++){//Loops through the rows
+        for(int j=0; j<3; j++){//loops the the columns
+            cout << matrix[i][j]  << "  ";
+        }
+        cout << "" << endl;
+    }
+}
+
+
+
+
+void createFace (const string & str1){ //Function Creates a Face
     if(str1 == "Front"){//Code for Front Face
         int frontFace [3][3]; //creates a 3*3 matrix or a 2d array.
-    
+        for(int i=0; i<3; i++){//Loops through the rows
+            for(int j=0; j<3; j++){//loops the the columns
+                frontFace[i][j] = input();
+            }
+        }
+    printFace(frontFace);
+
     }else if(str1 == "Back"){//Code for Back Face
         cout <<"Back" <<endl;
     } else if(str1 == "Up"){//Code for Upper Face
@@ -54,7 +75,7 @@ void createAndPrintFace (const string & str1){ //Function Creates a Face
 
 int main()
 {
-    createAndPrintFace("Front");
+    createFace("Front");
 }
 
 
