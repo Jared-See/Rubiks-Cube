@@ -1,200 +1,109 @@
 #include <Arduino.h>
-
-void setup() {
-  // put your setup code here, to run once:
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-Hello thanks for looking at my project
-You can view my other projects at my GitHub, Pagaley12
-If you find any issues just make an error or let me know.
-#include<iostream>
-#include<fstream>
-#include <string>
-#include "Header_Files/matrix.h"
-
-
 using namespace std;
 
-int input(istream& in=cin)//Allows User Input
-{
-	int x;
-	in >> x;
-	return x;
+
+
+void setup() { //The Setup
+  Serial.begin(9600);
 }
 
-class cubeFace{
-    Matrix<int, 3, 3>face;
-    int FC4 = face[0][0];
-    int FE3 = face[1][0];
-    int FC3 = face[2][0];
-    int FE4 = face[0][1];
-    int C   = face[1][1];
-    int FE2 = face[2][1];
-    int FC1 = face[0][2];
-    int FE1 = face[1][2];
-    int FC2 = face[2][2];
 
-    cubeFace* leftFace;
-    cubeFace* rightFace;
-    cubeFace* upFace;
-    cubeFace* downFace;
-    cubeFace* backFace;
 
-    void rightFace(){
 
-    };
+
+class cubeFace{ //A class of  individual cube faces
+public:
+  char face[3][3];
+  char FC4 = face[0][0];
+  char Fe3 = face[1][0];
+  char FC3 = face[2][0];
+  char FE4 = face[0][1];
+  char C   = face[1][1];
+  char Fe2 = face[2][1];
+  char FC1 = face[0][2];
+  char Fe1 = face[1][2];
+  char FC2 = face[2][2];
+
+  cubeFace* leftFace;
+  cubeFace* rightFace;
+  cubeFace* upFace;
+  cubeFace* downFace;
+  cubeFace* backFace;
 };
+
+
 
 
 
 class rubiksCube{
-
+public:
+  cubeFace frontFace;
+  cubeFace leftFace;
+  cubeFace rightFace;
+  cubeFace upFace;
+  cubeFace downFace;
+  cubeFace backFace;
 };
 
 
 
 
-int main()//Main Program
-{
-    cubeFace frontFace;
-    cubeFace leftFace;
-    cubeFace rightFace;
-    cubeFace upFace;
-    cubeFace downFace;
-    cubeFace backFace;
 
-    return 0;
+//Global Vairables
+//Creates the 6 sides of the cube
+cubeFace frontFace;
+cubeFace leftFace;
+cubeFace rightFace;
+cubeFace upFace;
+cubeFace downFace;
+cubeFace backFace;
+
+
+
+
+
+rubiksCube rotateL(rubiksCube& temp){
+  temp.frontFace = rightFace;
+  temp.leftFace = frontFace;
+  temp.rightFace = backFace;
+  temp.upFace = upFace;
+  temp.downFace = downFace;
+  temp.backFace = leftFace;
+
+  return temp;
 }
 
 
-void setUpCubes(){
-
-    //Initializing All The Cube Faces As Objects Of The cubeFace Class
-
-
-    //Initializing the Faces of the Cube Relative To The Front Face
-    frontFace.backFace = backFace;
-    frontFace.leftFace = leftFace;
-    frontFace.rightFace = rightFace;
-    frontFace.upFace = upFace;
-    frontFace.downFace = downFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    leftFace.backFace = rightFace;
-    leftFace.leftFace = backFace;
-    leftFace.rightFace = frontFace;
-    leftFace.upFace = upFace;
-    leftFace.downFace = downFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    rightFace.backFace = leftFace;
-    rightFace.leftFace = frontFace;
-    rightFace.rightFace = backFace;
-    rightFace.upFace = upFace;
-    rightFace.downFace = downFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    upFace.backFace = downFace;
-    upFace.leftFace = leftFace;
-    upFace.rightFace = rightFace;
-    upFace.upFace = backFace;
-    upFace.downFace = frontFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    downFace.backFace = upFace;
-    downFace.leftFace = leftFace;
-    downFace.rightFace = rightFace;
-    downFace.downFace = backFace;
-    downFace.upFace = frontFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    backFace.backFace = frontFace;
-    backFace.leftFace = rightFace;
-    backFace.rightFace = leftFace;
-    backFace.downFace = downFace;
-    backFace.upFace = upFace;
-} */
 
 
 
+rubiksCube rotateR(rubiksCube& temp){
+  temp.frontFace = leftFace;
+  temp.leftFace = backFace;
+  temp.rightFace = frontFace;
+  temp.upFace = upFace;
+  temp.downFace = downFace;
+  temp.backFace = rightFace;
+
+  return temp;
+}
 
 
 
+//Main Code Loop
+void loop() {
+  //Creates the Main Rubiks cube
+  rubiksCube mainCube;
 
+  //Defines the Faces of the cube
+  mainCube.backFace = backFace;
+  mainCube.frontFace = frontFace;
+  mainCube.leftFace = leftFace;
+  mainCube.rightFace = rightFace;
+  mainCube.upFace = upFace;
+  mainCube.downFace = downFace;
 
+  rightFace.FC1 = 'A';
+  rotateL(mainCube);
 
-
-
-
-
-
-
-
-
-/*      //Initializing All The Cube Faces As Objects Of The cubeFace Class
-    cubeFace frontFace;
-    cubeFace leftFace;
-    cubeFace rightFace;
-    cubeFace upFace;
-    cubeFace downFace;
-    cubeFace backFace;
-
-    //Initializing the Faces of the Cube Relative To The Front Face
-    frontFace.backFace = backFace;
-    frontFace.leftFace = leftFace;
-    frontFace.rightFace = rightFace;
-    frontFace.upFace = upFace;
-    frontFace.downFace = downFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    leftFace.backFace = rightFace;
-    leftFace.leftFace = backFace;
-    leftFace.rightFace = frontFace;
-    leftFace.upFace = upFace;
-    leftFace.downFace = downFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    rightFace.backFace = leftFace;
-    rightFace.leftFace = frontFace;
-    rightFace.rightFace = backFace;
-    rightFace.upFace = upFace;
-    rightFace.downFace = downFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    upFace.backFace = downFace;
-    upFace.leftFace = leftFace;
-    upFace.rightFace = rightFace;
-    upFace.upFace = backFace;
-    upFace.downFace = frontFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    downFace.backFace = upFace;
-    downFace.leftFace = leftFace;
-    downFace.rightFace = rightFace;
-    downFace.downFace = backFace;
-    downFace.upFace = frontFace;
-
-    //Initializing the Faces of the Cube Relative To The Left Face
-    backFace.backFace = frontFace;
-    backFace.leftFace = rightFace;
-    backFace.rightFace = leftFace;
-    backFace.downFace = downFace;
-    backFace.upFace = upFace;  */
+}
