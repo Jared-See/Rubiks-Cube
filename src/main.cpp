@@ -62,32 +62,46 @@ cubeFace backFace;
 
 
 
-rubiksCube rotateL(rubiksCube& temp){
-  temp.frontFace = rightFace;
-  temp.leftFace = frontFace;
-  temp.rightFace = backFace;
-  temp.upFace = upFace;
-  temp.downFace = downFace;
-  temp.backFace = leftFace;
+rubiksCube rotateL(rubiksCube& cubeMain){
+  cubeMain.frontFace = rightFace;
+  cubeMain.leftFace = frontFace;
+  cubeMain.rightFace = backFace;
+  cubeMain.upFace = upFace;
+  cubeMain.downFace = downFace;
+  cubeMain.backFace = leftFace;
 
-  return temp;
+  return cubeMain;
 }
 
 
 
 
 
-rubiksCube rotateR(rubiksCube& temp){
-  temp.frontFace = leftFace;
-  temp.leftFace = backFace;
-  temp.rightFace = frontFace;
-  temp.upFace = upFace;
-  temp.downFace = downFace;
-  temp.backFace = rightFace;
+rubiksCube rotateR(rubiksCube& cubeMain){
+  cubeMain.frontFace = leftFace;
+  cubeMain.leftFace = backFace;
+  cubeMain.rightFace = frontFace;
+  cubeMain.upFace = upFace;
+  cubeMain.downFace = downFace;
+  cubeMain.backFace = rightFace;
 
-  return temp;
+  return cubeMain;
 }
 
+
+
+rubiksCube moveR(rubiksCube& cubeMain){
+  //Changes to the front face
+  cubeMain.frontFace.FC2 = cubeMain.downFace.FC2;
+  cubeMain.frontFace.Fe2 = cubeMain.downFace.Fe2;
+  cubeMain.frontFace.FC3 = cubeMain.downFace.FC3;
+
+  //Changes to the up face
+  cubeMain.upFace.FC2 = cubeMain.upFace.FC2;
+  cubeMain.upFace.Fe2 = cubeMain.upFace.Fe2;
+  cubeMain.upFace.FC3 = cubeMain.upFace.FC3;
+  return cubeMain;
+}
 
 
 //Main Code Loop
@@ -101,13 +115,8 @@ void loop() {
   mainCube.leftFace = leftFace;
   mainCube.rightFace = rightFace;
   mainCube.upFace = upFace;
-  mainCube.downFace = downFace;
+  mainCube.frontFace = downFace;
 
-  rightFace.FC1 = 'A';
-  rotateR(mainCube);
-  if(mainCube.backFace.FC1 = 'A'){
-    Serial.println("sucess");
-  }
 
 
 }
