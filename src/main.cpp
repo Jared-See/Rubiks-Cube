@@ -17,7 +17,7 @@ public:
   char FC4 = face[0][0];
   char Fe3 = face[1][0];
   char FC3 = face[2][0];
-  char FE4 = face[0][1];
+  char Fe4 = face[0][1];
   char C   = face[1][1];
   char Fe2 = face[2][1];
   char FC1 = face[0][2];
@@ -63,12 +63,20 @@ cubeFace backFace;
 
 
 rubiksCube rotateL(rubiksCube& cubeMain){
-  cubeMain.frontFace = rightFace;
-  cubeMain.leftFace = frontFace;
-  cubeMain.rightFace = backFace;
-  cubeMain.upFace = upFace;
-  cubeMain.downFace = downFace;
-  cubeMain.backFace = leftFace;
+  //Creates Temperary Variables of the sides
+  cubeFace tempRightCubeFace = cubeMain.rightFace;
+  cubeFace tempFrontCubeFace = cubeMain.frontFace;
+  cubeFace tempLeftFace = cubeMain.leftFace;
+  cubeFace tempUpFace = cubeMain.upFace;
+  cubeFace tempDownFace = cubeMain.downFace;
+  cubeFace tempBackFace = cubeMain.backFace;
+  
+  cubeMain.frontFace = tempRightCubeFace;
+  cubeMain.leftFace = tempFrontCubeFace;
+  cubeMain.rightFace = tempBackFace;
+  cubeMain.upFace = tempUpFace;
+  cubeMain.downFace = tempDownFace;
+  cubeMain.backFace = tempLeftFace;
 
   return cubeMain;
 }
@@ -78,12 +86,20 @@ rubiksCube rotateL(rubiksCube& cubeMain){
 
 
 rubiksCube rotateR(rubiksCube& cubeMain){
-  cubeMain.frontFace = leftFace;
-  cubeMain.leftFace = backFace;
-  cubeMain.rightFace = frontFace;
-  cubeMain.upFace = upFace;
-  cubeMain.downFace = downFace;
-  cubeMain.backFace = rightFace;
+  //Creates Temperary Variables of the sides
+  cubeFace tempRightCubeFace = cubeMain.rightFace;
+  cubeFace tempFrontCubeFace = cubeMain.frontFace;
+  cubeFace tempLeftFace = cubeMain.leftFace;
+  cubeFace tempUpFace = cubeMain.upFace;
+  cubeFace tempDownFace = cubeMain.downFace;
+  cubeFace tempBackFace = cubeMain.backFace;
+  
+  cubeMain.frontFace = tempLeftFace;
+  cubeMain.leftFace = tempBackFace;
+  cubeMain.rightFace = tempFrontCubeFace;
+  cubeMain.upFace = tempUpFace;
+  cubeMain.downFace = tempDownFace;
+  cubeMain.backFace = tempRightCubeFace;
 
   return cubeMain;
 }
@@ -91,6 +107,33 @@ rubiksCube rotateR(rubiksCube& cubeMain){
 
 
 rubiksCube moveR(rubiksCube& cubeMain){
+  //Temperary Vairables
+  //Temp Front Faces
+  char tempFrontFC2 = cubeMain.frontFace.FC2;
+  char tempFrontFe2 = cubeMain.frontFace.Fe2;
+  char tempFrontFC3 = cubeMain.frontFace.FC3;
+  //Temp Up Faces
+  char tempUpFC2 = cubeMain.upFace.FC2;
+  char tempUpFe2 = cubeMain.upFace.Fe2;
+  char tempUpFC3 = cubeMain.upFace.FC3;
+  //Temp Down Faces
+  char tempDownFC2 = cubeMain.downFace.FC2;
+  char tempDownFe2 = cubeMain.downFace.Fe2;
+  char tempDownFC3 = cubeMain.downFace.FC3;
+  //Temp Back Faces
+  char tempBackFC1 = cubeMain.backFace.FC1;
+  char tempBackFe4 = cubeMain.backFace.Fe4;
+  char tempbackFC4 = cubeMain.backFace.FC4;
+  //Temp Right Face
+  char temprightFC1 = cubeMain.rightFace.FC2;
+  char temprightFe1 = cubeMain.rightFace.FC2;
+  char temprightFC2 = cubeMain.rightFace.FC2;
+  char temprightFe4 = cubeMain.rightFace.FC2;
+  char temprightFC2 = cubeMain.rightFace.FC2;
+  char temprightFC2 = cubeMain.rightFace.FC2;
+  char temprightFC2 = cubeMain.rightFace.FC2;
+  char temprightFC2 = cubeMain.rightFace.FC2;
+
   //Changes to the front face
   cubeMain.frontFace.FC2 = cubeMain.downFace.FC2;
   cubeMain.frontFace.Fe2 = cubeMain.downFace.Fe2;
@@ -100,6 +143,7 @@ rubiksCube moveR(rubiksCube& cubeMain){
   cubeMain.upFace.FC2 = cubeMain.upFace.FC2;
   cubeMain.upFace.Fe2 = cubeMain.upFace.Fe2;
   cubeMain.upFace.FC3 = cubeMain.upFace.FC3;
+
   return cubeMain;
 }
 
