@@ -125,14 +125,14 @@ rubiksCube moveR(rubiksCube& cubeMain){
   char tempBackFe4 = cubeMain.backFace.Fe4;
   char tempbackFC4 = cubeMain.backFace.FC4;
   //Temp Right Face
-  char temprightFC1 = cubeMain.rightFace.FC2;
-  char temprightFe1 = cubeMain.rightFace.FC2;
-  char temprightFC2 = cubeMain.rightFace.FC2;
-  char temprightFe4 = cubeMain.rightFace.FC2;
-  char temprightFC2 = cubeMain.rightFace.FC2;
-  char temprightFC2 = cubeMain.rightFace.FC2;
-  char temprightFC2 = cubeMain.rightFace.FC2;
-  char temprightFC2 = cubeMain.rightFace.FC2;
+  char tempRightFC1 = cubeMain.rightFace.FC1;
+  char tempRightFe1 = cubeMain.rightFace.Fe1;
+  char tempRightFC2 = cubeMain.rightFace.FC2;
+  char tempRightFe4 = cubeMain.rightFace.Fe4;
+  char tempRightFe2 = cubeMain.rightFace.Fe2;
+  char tempRightFC4 = cubeMain.rightFace.FC4;
+  char tempRightFe3 = cubeMain.rightFace.Fe3;
+  char tempRightFC3 = cubeMain.rightFace.FC3;
 
   //Changes to the front face
   cubeMain.frontFace.FC2 = cubeMain.downFace.FC2;
@@ -140,9 +140,30 @@ rubiksCube moveR(rubiksCube& cubeMain){
   cubeMain.frontFace.FC3 = cubeMain.downFace.FC3;
 
   //Changes to the up face
-  cubeMain.upFace.FC2 = cubeMain.upFace.FC2;
-  cubeMain.upFace.Fe2 = cubeMain.upFace.Fe2;
-  cubeMain.upFace.FC3 = cubeMain.upFace.FC3;
+  cubeMain.upFace.FC2 = tempFrontFC2;
+  cubeMain.upFace.Fe2 = tempFrontFe2;
+  cubeMain.upFace.FC3 = tempFrontFC3;
+
+  //Chnages to the back face
+  cubeMain.backFace.FC1 = tempUpFC3;
+  cubeMain.backFace.Fe4 = tempUpFe2;
+  cubeMain.backFace.FC4 = tempUpFC2;
+
+  //Changes to the down face
+  cubeMain.downFace.FC2 = tempBackFC1;
+  cubeMain.downFace.Fe2 = tempBackFe4;
+  cubeMain.downFace.FC3 = tempbackFC4;
+
+  //Changes to the right face
+  cubeMain.rightFace.FC1 = tempRightFC4;
+  cubeMain.rightFace.Fe1 = tempRightFe4;
+  cubeMain.rightFace.FC2 = tempRightFC1;
+  cubeMain.rightFace.Fe4 = tempRightFe3;
+  cubeMain.rightFace.Fe2 = tempRightFe1;
+  cubeMain.rightFace.FC4 = tempRightFC3;
+  cubeMain.rightFace.Fe3 = tempRightFe2;
+  cubeMain.rightFace.FC3 = tempRightFC2;
+
 
   return cubeMain;
 }
