@@ -177,10 +177,7 @@ rubiksCube moveRPrime(rubiksCube& cubeMain){
   char tempFrontFC2 = cubeMain.frontFace.FC2;
   char tempFrontFe2 = cubeMain.frontFace.Fe2;
   char tempFrontFC3 = cubeMain.frontFace.FC3;
-  //Temp Up Faces
-  char tempUpFC2 = cubeMain.upFace.FC2;
-  char tempUpFe2 = cubeMain.upFace.Fe2;
-  char tempUpFC3 = cubeMain.upFace.FC3;
+
 
   //Temp Back Faces
   char tempBackFC1 = cubeMain.backFace.FC1;
@@ -203,8 +200,8 @@ rubiksCube moveRPrime(rubiksCube& cubeMain){
 
   //Changes to the up face
   cubeMain.upFace.FC2 = tempBackFC4;
-  cubeMain.upFace.Fe2 = tempFrontFe2;
-  cubeMain.upFace.FC3 = tempFrontFC3;
+  cubeMain.upFace.Fe2 = tempBackFe4;
+  cubeMain.upFace.FC3 = tempBackFC1;
 
   //Changes to the back face
   cubeMain.backFace.FC1 = tempDownFC3;
@@ -230,8 +227,34 @@ rubiksCube moveRPrime(rubiksCube& cubeMain){
   return cubeMain;
 }
 
+void printFace(cubeFace cubeMainFace){
+  char face[3][3];
+  face[0][0] = cubeMainFace.FC4;
+  face[1][0] = cubeMainFace.Fe3;
+  face[2][0] = cubeMainFace.FC3;
+  face[0][1] = cubeMainFace.Fe4;
+  face[1][1] = cubeMainFace.C;
+  face[2][1] = cubeMainFace.Fe2;
+  face[0][2] = cubeMainFace.FC1;
+  face[1][2] = cubeMainFace.Fe1;
+  face[2][2] = cubeMainFace.FC2;
+
+   for(int x=0;x<3;x++)  // loop 3 times for three lines
+    {
+        for(int y=0;y<3;y++)  // loop for the three elements on the line
+        {
+            Serial.print(face[x][y]);  // display the current element out of the array
+        }
+    Serial.println("");  // when the inner loop is done, go to a new line
+    }
+}
+
+
+
+
+
 //Main Code Loop
-void loop() {
+void loop(){
   //Creates the Main Rubiks cube
   rubiksCube mainCube;
 
@@ -246,27 +269,3 @@ void loop() {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- for(int x=0;x<3;x++)  // loop 3 times for three lines
-    {
-        for(int y=0;y<3;y++)  // loop for the three elements on the line
-        {
-            cout<<matrix[x][y];  // display the current element out of the array
-        }
-    cout<<endl;  // when the inner loop is done, go to a new line
-    }
-*/
