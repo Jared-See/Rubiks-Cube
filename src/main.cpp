@@ -116,10 +116,7 @@ rubiksCube moveR(rubiksCube& cubeMain){
   char tempUpFC2 = cubeMain.upFace.FC2;
   char tempUpFe2 = cubeMain.upFace.Fe2;
   char tempUpFC3 = cubeMain.upFace.FC3;
-  //Temp Down Faces
-  char tempDownFC2 = cubeMain.downFace.FC2;
-  char tempDownFe2 = cubeMain.downFace.Fe2;
-  char tempDownFC3 = cubeMain.downFace.FC3;
+
   //Temp Back Faces
   char tempBackFC1 = cubeMain.backFace.FC1;
   char tempBackFe4 = cubeMain.backFace.Fe4;
@@ -169,6 +166,70 @@ rubiksCube moveR(rubiksCube& cubeMain){
 }
 
 
+rubiksCube moveRPrime(rubiksCube& cubeMain){
+  //Temperary Vairables
+  //Temp Down Faces
+  char tempDownFC2 = cubeMain.downFace.FC2;
+  char tempDownFe2 = cubeMain.downFace.Fe2;
+  char tempDownFC3 = cubeMain.downFace.FC3;
+
+  //Temp Front Faces
+  char tempFrontFC2 = cubeMain.frontFace.FC2;
+  char tempFrontFe2 = cubeMain.frontFace.Fe2;
+  char tempFrontFC3 = cubeMain.frontFace.FC3;
+  //Temp Up Faces
+  char tempUpFC2 = cubeMain.upFace.FC2;
+  char tempUpFe2 = cubeMain.upFace.Fe2;
+  char tempUpFC3 = cubeMain.upFace.FC3;
+
+  //Temp Back Faces
+  char tempBackFC1 = cubeMain.backFace.FC1;
+  char tempBackFe4 = cubeMain.backFace.Fe4;
+  char tempBackFC4 = cubeMain.backFace.FC4;
+  //Temp Right Face
+  char tempRightFC1 = cubeMain.rightFace.FC1;
+  char tempRightFe1 = cubeMain.rightFace.Fe1;
+  char tempRightFC2 = cubeMain.rightFace.FC2;
+  char tempRightFe4 = cubeMain.rightFace.Fe4;
+  char tempRightFe2 = cubeMain.rightFace.Fe2;
+  char tempRightFC4 = cubeMain.rightFace.FC4;
+  char tempRightFe3 = cubeMain.rightFace.Fe3;
+  char tempRightFC3 = cubeMain.rightFace.FC3;
+
+  //Changes to the front face
+  cubeMain.frontFace.FC2 = cubeMain.upFace.FC2;
+  cubeMain.frontFace.Fe2 = cubeMain.upFace.Fe2;
+  cubeMain.frontFace.FC3 = cubeMain.upFace.FC3;
+
+  //Changes to the up face
+  cubeMain.upFace.FC2 = tempBackFC4;
+  cubeMain.upFace.Fe2 = tempFrontFe2;
+  cubeMain.upFace.FC3 = tempFrontFC3;
+
+  //Changes to the back face
+  cubeMain.backFace.FC1 = tempDownFC3;
+  cubeMain.backFace.Fe4 = tempDownFe2;
+  cubeMain.backFace.FC4 = tempDownFC2;
+
+  //Changes to the down face
+  cubeMain.downFace.FC2 = tempFrontFC2;
+  cubeMain.downFace.Fe2 = tempFrontFe2;
+  cubeMain.downFace.FC3 = tempFrontFC3;
+
+  //Changes to the right face
+  cubeMain.rightFace.FC1 = tempRightFC2;
+  cubeMain.rightFace.Fe1 = tempRightFe2;
+  cubeMain.rightFace.FC2 = tempRightFC3;
+  cubeMain.rightFace.Fe4 = tempRightFe1;
+  cubeMain.rightFace.Fe2 = tempRightFe3;
+  cubeMain.rightFace.FC4 = tempRightFC1;
+  cubeMain.rightFace.Fe3 = tempRightFe4;
+  cubeMain.rightFace.FC3 = tempRightFC4;
+
+
+  return cubeMain;
+}
+
 //Main Code Loop
 void loop() {
   //Creates the Main Rubiks cube
@@ -185,3 +246,27 @@ void loop() {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ for(int x=0;x<3;x++)  // loop 3 times for three lines
+    {
+        for(int y=0;y<3;y++)  // loop for the three elements on the line
+        {
+            cout<<matrix[x][y];  // display the current element out of the array
+        }
+    cout<<endl;  // when the inner loop is done, go to a new line
+    }
+*/
