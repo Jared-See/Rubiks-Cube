@@ -227,26 +227,27 @@ rubiksCube moveRPrime(rubiksCube& cubeMain){
   return cubeMain;
 }
 
+
+
 void printFace(cubeFace cubeMainFace){
   char face[3][3];
-  face[0][0] = cubeMainFace.FC4;
-  face[1][0] = cubeMainFace.Fe3;
-  face[2][0] = cubeMainFace.FC3;
-  face[0][1] = cubeMainFace.Fe4;
+  face[2][0] = cubeMainFace.FC4;
+  face[2][1] = cubeMainFace.Fe3;
+  face[2][2] = cubeMainFace.FC3;
+  face[1][0] = cubeMainFace.Fe4;
   face[1][1] = cubeMainFace.C;
-  face[2][1] = cubeMainFace.Fe2;
-  face[0][2] = cubeMainFace.FC1;
-  face[1][2] = cubeMainFace.Fe1;
-  face[2][2] = cubeMainFace.FC2;
+  face[1][2] = cubeMainFace.Fe2;
+  face[0][0] = cubeMainFace.FC1;
+  face[0][1] = cubeMainFace.Fe1;
+  face[0][2] = cubeMainFace.FC2;
 
-   for(int x=0;x<3;x++)  // loop 3 times for three lines
+    for(int i=0 ; i<=2 ; i++)
     {
-        for(int y=0;y<3;y++)  // loop for the three elements on the line
-        {
-            Serial.print(face[x][y]);  // display the current element out of the array
-        }
-    Serial.println("");  // when the inner loop is done, go to a new line
+        for(int j=0 ; j<=2 ; j++)
+            Serial.print( *(*(face+i)+j));
+        Serial.println("");
     }
+    Serial.println("");
 }
 
 
@@ -266,6 +267,17 @@ void loop(){
   mainCube.upFace = upFace;
   mainCube.frontFace = downFace;
 
+  frontFace.FC4 = 'R';
+  frontFace.Fe3 = 'E';
+  frontFace.FC3 = 'D';
+  frontFace.Fe4 = 'H';
+  frontFace.C = 'E';
+  frontFace.Fe2 = 'Y';
+  frontFace.FC1 = 'A';
+  frontFace.Fe1 = 'S';
+  frontFace.FC2 = 'S';
+
+  printFace(frontFace);
 
 
 }
