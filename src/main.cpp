@@ -14,15 +14,15 @@ void setup() { //The Setup
 class cubeFace{ //A class of  individual cube faces
 public:
   char face[3][3];
-  char FC4 = face[0][0];
-  char Fe3 = face[1][0];
-  char FC3 = face[2][0];
-  char Fe4 = face[0][1];
+  char FC4 = face[2][0];
+  char Fe3 = face[2][1];
+  char FC3 = face[2][2];
+  char Fe4 = face[1][0];
   char C   = face[1][1];
-  char Fe2 = face[2][1];
-  char FC1 = face[0][2];
-  char Fe1 = face[1][2];
-  char FC2 = face[2][2];
+  char Fe2 = face[1][2];
+  char FC1 = face[0][0];
+  char Fe1 = face[0][1];
+  char FC2 = face[0][2];
 
   cubeFace* leftFace;
   cubeFace* rightFace;
