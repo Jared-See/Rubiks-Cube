@@ -227,6 +227,66 @@ rubiksCube moveRPrime(rubiksCube& cubeMain){
   return cubeMain;
 }
 
+rubiksCube moveL(rubiksCube& cubeMain){
+  //Temperary Vairables
+  //Temp Down Faces
+  char tempDownFC1 = cubeMain.downFace.FC1;
+  char tempDownFe4 = cubeMain.downFace.Fe4;
+  char tempDownFC4 = cubeMain.downFace.FC4;
+
+  //Temp Front Faces
+  char tempFrontFC1 = cubeMain.frontFace.FC1;
+  char tempFrontFe4 = cubeMain.frontFace.Fe4;
+  char tempFrontFC4 = cubeMain.frontFace.FC4;
+
+
+  //Temp Back Faces
+  char tempBackFC2 = cubeMain.backFace.FC2;
+  char tempBackFe2 = cubeMain.backFace.Fe2;
+  char tempBackFC3 = cubeMain.backFace.FC3;
+  //Temp left Face
+  char templeftFC1 = cubeMain.leftFace.FC1;
+  char templeftFe1 = cubeMain.leftFace.Fe1;
+  char templeftFC2 = cubeMain.leftFace.FC2;
+  char templeftFe4 = cubeMain.leftFace.Fe4;
+  char templeftFe2 = cubeMain.leftFace.Fe2;
+  char templeftFC4 = cubeMain.leftFace.FC4;
+  char templeftFe3 = cubeMain.leftFace.Fe3;
+  char templeftFC3 = cubeMain.leftFace.FC3;
+
+  //Changes to the front face
+  cubeMain.frontFace.FC1 = cubeMain.upFace.FC1;
+  cubeMain.frontFace.Fe4 = cubeMain.upFace.Fe4;
+  cubeMain.frontFace.FC4 = cubeMain.upFace.FC4;
+
+  //Changes to the up face
+  cubeMain.upFace.FC1 = tempBackFC2;
+  cubeMain.upFace.Fe4 = tempBackFe2;
+  cubeMain.upFace.FC4 = tempBackFC3;
+
+  //Changes to the back face
+  cubeMain.backFace.FC2 = tempDownFC4;
+  cubeMain.backFace.Fe2 = tempDownFe4;
+  cubeMain.backFace.FC3 = tempDownFC1;
+
+  //Changes to the down face
+  cubeMain.downFace.FC1 = tempFrontFC1;
+  cubeMain.downFace.Fe4 = tempFrontFe4;
+  cubeMain.downFace.FC4 = tempFrontFC4;
+
+  //Changes to the left face
+  cubeMain.leftFace.FC1 = templeftFC4;
+  cubeMain.leftFace.Fe1 = templeftFe4;
+  cubeMain.leftFace.FC2 = templeftFC1;
+  cubeMain.leftFace.Fe4 = templeftFe3;
+  cubeMain.leftFace.Fe2 = templeftFe1;
+  cubeMain.leftFace.FC4 = templeftFC3;
+  cubeMain.leftFace.Fe3 = templeftFe2;
+  cubeMain.leftFace.FC3 = templeftFC2;
+  
+
+  return cubeMain;
+}
 
 
 void printFace(cubeFace cubeMainFace){
@@ -266,18 +326,6 @@ void loop(){
   mainCube.rightFace = rightFace;
   mainCube.upFace = upFace;
   mainCube.frontFace = downFace;
-
-  frontFace.FC4 = 'R';
-  frontFace.Fe3 = 'E';
-  frontFace.FC3 = 'D';
-  frontFace.Fe4 = 'H';
-  frontFace.C = 'E';
-  frontFace.Fe2 = 'Y';
-  frontFace.FC1 = 'A';
-  frontFace.Fe1 = 'S';
-  frontFace.FC2 = 'S';
-
-  printFace(frontFace);
 
 
 }
