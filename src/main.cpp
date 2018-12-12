@@ -347,61 +347,64 @@ rubiksCube moveLPrime(rubiksCube& cubeMain){
 rubiksCube moveUp(rubiksCube& cubeMain){
   //Temperary Vairables
   //Temp Front Faces
-  char tempUpFC1 = cubeMain.upFace.FC1;
-  char tempUpFe1 = cubeMain.upFace.Fe1;
-  char tempUpFC2 = cubeMain.upFace.FC2;
+  char tempFrontFC1 = cubeMain.frontFace.FC1;
+  char tempFrontFe1 = cubeMain.frontFace.Fe1;
+  char tempFrontFC2 = cubeMain.frontFace.FC2;
+ 
+  //Temp Left Faces
+  char tempLeftFC1 = cubeMain.leftFace.FC1;
+  char tempLeftFe1 = cubeMain.leftFace.Fe1;
+  char tempLeftFC2 = cubeMain.leftFace.FC2;
 
   //Temp Right Faces
   char tempRightFC1 = cubeMain.rightFace.FC1;
   char tempRightFe1 = cubeMain.rightFace.Fe1;
   char tempRightFC2 = cubeMain.rightFace.FC2;
-/*
-Left off wit the right faces
-*/
 
   //Temp Back Faces
+  char tempBackFC1 = cubeMain.backFace.FC1;
+  char tempBackFe1 = cubeMain.backFace.Fe1;
   char tempBackFC2 = cubeMain.backFace.FC2;
-  char tempBackFe2 = cubeMain.backFace.Fe2;
-  char tempBackFC3 = cubeMain.backFace.FC3;
-  //Temp left Face
-  char templeftFC1 = cubeMain.leftFace.FC1;
-  char templeftFe1 = cubeMain.leftFace.Fe1;
-  char templeftFC2 = cubeMain.leftFace.FC2;
-  char templeftFe4 = cubeMain.leftFace.Fe4;
-  char templeftFe2 = cubeMain.leftFace.Fe2;
-  char templeftFC4 = cubeMain.leftFace.FC4;
-  char templeftFe3 = cubeMain.leftFace.Fe3;
-  char templeftFC3 = cubeMain.leftFace.FC3;
+
+  //Temp up Face
+  char tempUpFC1 = cubeMain.upFace.FC1;
+  char tempUpFe1 = cubeMain.upFace.Fe1;
+  char tempUpFC2 = cubeMain.upFace.FC2;
+  char tempUpFe4 = cubeMain.upFace.Fe4;
+  char tempUpFe2 = cubeMain.upFace.Fe2;
+  char tempUpFC4 = cubeMain.upFace.FC4;
+  char tempUpFe3 = cubeMain.upFace.Fe3;
+  char tempUpFC3 = cubeMain.upFace.FC3;
 
   //Changes to the front face
-  cubeMain.frontFace.FC1 = cubeMain.downFace.FC1;
-  cubeMain.frontFace.Fe4 = cubeMain.downFace.Fe4;
-  cubeMain.frontFace.FC4 = cubeMain.downFace.FC4;
-
-  //Changes to the up face
-  cubeMain.upFace.FC1 = tempFrontFC1;
-  cubeMain.upFace.Fe4 = tempFrontFe4;
-  cubeMain.upFace.FC4 = tempFrontFC4;
-
-  //Changes to the back face
-  cubeMain.backFace.FC2 = tempUpFC4;
-  cubeMain.backFace.Fe2 = tempUpFe4;
-  cubeMain.backFace.FC3 = tempUpFC1;
-
-  //Changes to the down face
-  cubeMain.downFace.FC1 = tempBackFC3;
-  cubeMain.downFace.Fe4 = tempBackFe2;
-  cubeMain.downFace.FC4 = tempBackFC2;
+  cubeMain.frontFace.FC1 = cubeMain.rightFace.FC1;
+  cubeMain.frontFace.Fe1 = cubeMain.rightFace.Fe1;
+  cubeMain.frontFace.FC2 = cubeMain.rightFace.FC2;
 
   //Changes to the left face
-  cubeMain.leftFace.FC1 = templeftFC2;
-  cubeMain.leftFace.Fe1 = templeftFe2;
-  cubeMain.leftFace.FC2 = templeftFC3;
-  cubeMain.leftFace.Fe4 = templeftFe1;
-  cubeMain.leftFace.Fe2 = templeftFe3;
-  cubeMain.leftFace.FC4 = templeftFC1;
-  cubeMain.leftFace.Fe3 = templeftFe4;
-  cubeMain.leftFace.FC3 = templeftFC4;
+  cubeMain.leftFace.FC1 = tempFrontFC1;
+  cubeMain.leftFace.Fe1 = tempFrontFe1;
+  cubeMain.leftFace.FC2 = tempFrontFC2;
+
+  //Changes to the back face
+  cubeMain.backFace.FC1 = tempLeftFC1;
+  cubeMain.backFace.Fe1 = tempLeftFe1;
+  cubeMain.backFace.FC2 = tempLeftFC2;
+
+  //Changes to the right face
+  cubeMain.rightFace.FC1 = tempBackFC1;
+  cubeMain.rightFace.Fe1 = tempBackFe1;
+  cubeMain.rightFace.FC2 = tempBackFC2;
+
+  //Changes to the up face
+  cubeMain.upFace.FC1 = tempUpFC4;
+  cubeMain.upFace.Fe1 = tempUpFe4;
+  cubeMain.upFace.FC2 = tempUpFC1;
+  cubeMain.upFace.Fe4 = tempUpFe3;
+  cubeMain.upFace.Fe2 = tempUpFe1;
+  cubeMain.upFace.FC4 = tempUpFC3;
+  cubeMain.upFace.Fe3 = tempUpFe2;
+  cubeMain.upFace.FC3 = tempUpFC2;
   return cubeMain;
 }
 
