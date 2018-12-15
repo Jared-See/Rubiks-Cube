@@ -1,13 +1,6 @@
 #include <Arduino.h>
 using namespace std;
-//Global Vairables
-//Creates the 6 sides of the cube
-cubeFace frontFace;
-cubeFace leftFace;
-cubeFace rightFace;
-cubeFace upFace;
-cubeFace downFace;
-cubeFace backFace;
+
 
 
 
@@ -54,7 +47,14 @@ public:
 };
 
 
-
+//Global Vairables
+//Creates the 6 sides of the cube
+cubeFace frontFace;
+cubeFace leftFace;
+cubeFace rightFace;
+cubeFace upFace;
+cubeFace downFace;
+cubeFace backFace;
 
 
 
@@ -100,6 +100,7 @@ rubiksCube rotateR(rubiksCube& cubeMain){
 
   return cubeMain;
 }
+
 
 
 
@@ -163,6 +164,8 @@ rubiksCube moveR(rubiksCube& cubeMain){
 }
 
 
+
+
 rubiksCube moveRPrime(rubiksCube& cubeMain){
   //Temperary Vairables
   //Temp Down Faces
@@ -223,6 +226,9 @@ rubiksCube moveRPrime(rubiksCube& cubeMain){
 
   return cubeMain;
 }
+
+
+
 
 rubiksCube moveL(rubiksCube& cubeMain){
   //Temperary Vairables
@@ -285,6 +291,9 @@ rubiksCube moveL(rubiksCube& cubeMain){
   return cubeMain;
 }
 
+
+
+
 rubiksCube moveLPrime(rubiksCube& cubeMain){
   //Temperary Vairables
   //Temp Up Faces
@@ -343,6 +352,9 @@ rubiksCube moveLPrime(rubiksCube& cubeMain){
   cubeMain.leftFace.FC3 = templeftFC4;
   return cubeMain;
 }
+
+
+
 
 rubiksCube moveUp(rubiksCube& cubeMain){
   //Temperary Vairables
@@ -408,6 +420,76 @@ rubiksCube moveUp(rubiksCube& cubeMain){
   return cubeMain;
 }
 
+
+
+
+rubiksCube moveUpPrime(rubiksCube& cubeMain){
+  //Temperary Vairables
+  //Temp Front Faces
+  char tempFrontFC1 = cubeMain.frontFace.FC1;
+  char tempFrontFe1 = cubeMain.frontFace.Fe1;
+  char tempFrontFC2 = cubeMain.frontFace.FC2;
+ 
+  //Temp Left Faces
+  char tempLeftFC1 = cubeMain.leftFace.FC1;
+  char tempLeftFe1 = cubeMain.leftFace.Fe1;
+  char tempLeftFC2 = cubeMain.leftFace.FC2;
+
+  //Temp Right Faces
+  char tempRightFC1 = cubeMain.rightFace.FC1;
+  char tempRightFe1 = cubeMain.rightFace.Fe1;
+  char tempRightFC2 = cubeMain.rightFace.FC2;
+
+  //Temp Back Faces
+  char tempBackFC1 = cubeMain.backFace.FC1;
+  char tempBackFe1 = cubeMain.backFace.Fe1;
+  char tempBackFC2 = cubeMain.backFace.FC2;
+
+  //Temp up Face
+  char tempUpFC1 = cubeMain.upFace.FC1;
+  char tempUpFe1 = cubeMain.upFace.Fe1;
+  char tempUpFC2 = cubeMain.upFace.FC2;
+  char tempUpFe4 = cubeMain.upFace.Fe4;
+  char tempUpFe2 = cubeMain.upFace.Fe2;
+  char tempUpFC4 = cubeMain.upFace.FC4;
+  char tempUpFe3 = cubeMain.upFace.Fe3;
+  char tempUpFC3 = cubeMain.upFace.FC3;
+
+  //Changes to the front face
+  cubeMain.frontFace.FC1 = cubeMain.rightFace.FC1;
+  cubeMain.frontFace.Fe1 = cubeMain.rightFace.Fe1;
+  cubeMain.frontFace.FC2 = cubeMain.rightFace.FC2;
+
+  //Changes to the left face
+  cubeMain.leftFace.FC1 = tempFrontFC1;
+  cubeMain.leftFace.Fe1 = tempFrontFe1;
+  cubeMain.leftFace.FC2 = tempFrontFC2;
+
+  //Changes to the back face
+  cubeMain.backFace.FC1 = tempLeftFC1;
+  cubeMain.backFace.Fe1 = tempLeftFe1;
+  cubeMain.backFace.FC2 = tempLeftFC2;
+
+  //Changes to the right face
+  cubeMain.rightFace.FC1 = tempBackFC1;
+  cubeMain.rightFace.Fe1 = tempBackFe1;
+  cubeMain.rightFace.FC2 = tempBackFC2;
+
+  //Changes to the up face
+  cubeMain.upFace.FC1 = tempUpFC4;
+  cubeMain.upFace.Fe1 = tempUpFe4;
+  cubeMain.upFace.FC2 = tempUpFC1;
+  cubeMain.upFace.Fe4 = tempUpFe3;
+  cubeMain.upFace.Fe2 = tempUpFe1;
+  cubeMain.upFace.FC4 = tempUpFC3;
+  cubeMain.upFace.Fe3 = tempUpFe2;
+  cubeMain.upFace.FC3 = tempUpFC2;
+  return cubeMain;
+}
+
+
+
+
 void printFace(cubeFace cubeMainFace){
   char face[3][3];
   face[2][0] = cubeMainFace.FC4;
@@ -445,4 +527,75 @@ void loop(){
   mainCube.rightFace = rightFace;
   mainCube.upFace = upFace;
   mainCube.frontFace = frontFace;
+
+  mainCube.frontFace.FC1 = 'R';
+  mainCube.frontFace.FC2 = 'R';
+  mainCube.frontFace.FC3 = 'R';
+  mainCube.frontFace.FC4 = 'R';
+  mainCube.frontFace.Fe1 = 'R';
+  mainCube.frontFace.Fe2 = 'R';
+  mainCube.frontFace.Fe3 = 'R';
+  mainCube.frontFace.Fe4 = 'R';
+  mainCube.frontFace.C = 'R';
+
+  mainCube.rightFace.FC1 = 'B';
+  mainCube.rightFace.FC2 = 'B';
+  mainCube.rightFace.FC3 = 'B';
+  mainCube.rightFace.FC4 = 'B';
+  mainCube.rightFace.Fe1 = 'B';
+  mainCube.rightFace.Fe2 = 'B';
+  mainCube.rightFace.Fe3 = 'B';
+  mainCube.rightFace.Fe4 = 'B';
+  mainCube.rightFace.C = 'B';
+
+  
+  mainCube.leftFace.FC1 = 'G';
+  mainCube.leftFace.FC2 = 'G';
+  mainCube.leftFace.FC3 = 'G';
+  mainCube.leftFace.FC4 = 'G';
+  mainCube.leftFace.Fe1 = 'G';
+  mainCube.leftFace.Fe2 = 'G';
+  mainCube.leftFace.Fe3 = 'G';
+  mainCube.leftFace.Fe4 = 'G';
+  mainCube.leftFace.C = 'G';
+
+  mainCube.backFace.FC1 = 'O';
+  mainCube.backFace.FC2 = 'O';
+  mainCube.backFace.FC3 = 'O';
+  mainCube.backFace.FC4 = 'O';
+  mainCube.backFace.Fe1 = 'O';
+  mainCube.backFace.Fe2 = 'O';
+  mainCube.backFace.Fe3 = 'O';
+  mainCube.backFace.Fe4 = 'O';
+  mainCube.backFace.C = 'O';
+
+  mainCube.upFace.FC1 = 'W';
+  mainCube.upFace.FC2 = 'W';
+  mainCube.upFace.FC3 = 'W';
+  mainCube.upFace.FC4 = 'W';
+  mainCube.upFace.Fe1 = 'W';
+  mainCube.upFace.Fe2 = 'W';
+  mainCube.upFace.Fe3 = 'W';
+  mainCube.upFace.Fe4 = 'W';
+  mainCube.upFace.C = 'W';
+
+  mainCube.downFace.FC1 = 'Y';
+  mainCube.downFace.FC2 = 'Y';
+  mainCube.downFace.FC3 = 'Y';
+  mainCube.downFace.FC4 = 'Y';
+  mainCube.downFace.Fe1 = 'Y';
+  mainCube.downFace.Fe2 = 'Y';
+  mainCube.downFace.Fe3 = 'Y';
+  mainCube.downFace.Fe4 = 'Y';
+  mainCube.downFace.C = 'Y';
+
+  moveLPrime(mainCube);
+  printFace(mainCube.frontFace);
+  printFace(mainCube.rightFace);
+  printFace(mainCube.leftFace);
+  printFace(mainCube.backFace);
+  printFace(mainCube.upFace);
+  printFace(mainCube.downFace);
+  delay(1000000);
+  
 }
