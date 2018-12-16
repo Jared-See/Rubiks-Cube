@@ -589,7 +589,7 @@ void loop(){
   mainCube.downFace.Fe4 = 'Y';
   mainCube.downFace.C = 'Y';
 
-  moveLPrime(mainCube);
+  moveL(mainCube);
   printFace(mainCube.frontFace);
   printFace(mainCube.rightFace);
   printFace(mainCube.leftFace);
