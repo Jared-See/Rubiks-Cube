@@ -356,17 +356,13 @@ rubiksCube moveLPrime(rubiksCube& cubeMain){
 
 
 
-rubiksCube moveUp(rubiksCube& cubeMain){
+rubiksCube moveUpPrime(rubiksCube& cubeMain){
   //Temperary Vairables
   //Temp Front Faces
   char tempFrontFC1 = cubeMain.frontFace.FC1;
   char tempFrontFe1 = cubeMain.frontFace.Fe1;
   char tempFrontFC2 = cubeMain.frontFace.FC2;
  
-  //Temp Left Faces
-  char tempLeftFC1 = cubeMain.leftFace.FC1;
-  char tempLeftFe1 = cubeMain.leftFace.Fe1;
-  char tempLeftFC2 = cubeMain.leftFace.FC2;
 
   //Temp Right Faces
   char tempRightFC1 = cubeMain.rightFace.FC1;
@@ -389,24 +385,24 @@ rubiksCube moveUp(rubiksCube& cubeMain){
   char tempUpFC3 = cubeMain.upFace.FC3;
 
   //Changes to the front face
-  cubeMain.frontFace.FC1 = cubeMain.rightFace.FC1;
-  cubeMain.frontFace.Fe1 = cubeMain.rightFace.Fe1;
-  cubeMain.frontFace.FC2 = cubeMain.rightFace.FC2;
+  cubeMain.frontFace.FC1 = cubeMain.leftFace.FC1;
+  cubeMain.frontFace.Fe1 = cubeMain.leftFace.Fe1;
+  cubeMain.frontFace.FC2 = cubeMain.leftFace.FC2;
 
   //Changes to the left face
-  cubeMain.leftFace.FC1 = tempFrontFC1;
-  cubeMain.leftFace.Fe1 = tempFrontFe1;
-  cubeMain.leftFace.FC2 = tempFrontFC2;
+  cubeMain.leftFace.FC1 = tempBackFC1;
+  cubeMain.leftFace.Fe1 = tempBackFe1;
+  cubeMain.leftFace.FC2 = tempBackFC2;
 
   //Changes to the back face
-  cubeMain.backFace.FC1 = tempLeftFC1;
-  cubeMain.backFace.Fe1 = tempLeftFe1;
-  cubeMain.backFace.FC2 = tempLeftFC2;
+  cubeMain.backFace.FC1 = tempRightFC1;
+  cubeMain.backFace.Fe1 = tempRightFe1;
+  cubeMain.backFace.FC2 = tempRightFC2;
 
   //Changes to the right face
-  cubeMain.rightFace.FC1 = tempBackFC1;
-  cubeMain.rightFace.Fe1 = tempBackFe1;
-  cubeMain.rightFace.FC2 = tempBackFC2;
+  cubeMain.rightFace.FC1 = tempFrontFC1;
+  cubeMain.rightFace.Fe1 = tempFrontFe1;
+  cubeMain.rightFace.FC2 = tempFrontFC2;
 
   //Changes to the up face
   cubeMain.upFace.FC1 = tempUpFC4;
@@ -423,7 +419,7 @@ rubiksCube moveUp(rubiksCube& cubeMain){
 
 
 
-rubiksCube moveUpPrime(rubiksCube& cubeMain){
+rubiksCube moveUp(rubiksCube& cubeMain){
   //Temperary Vairables
   //Temp Front Faces
   char tempFrontFC1 = cubeMain.frontFace.FC1;
@@ -435,10 +431,6 @@ rubiksCube moveUpPrime(rubiksCube& cubeMain){
   char tempLeftFe1 = cubeMain.leftFace.Fe1;
   char tempLeftFC2 = cubeMain.leftFace.FC2;
 
-  //Temp Right Faces
-  char tempRightFC1 = cubeMain.rightFace.FC1;
-  char tempRightFe1 = cubeMain.rightFace.Fe1;
-  char tempRightFC2 = cubeMain.rightFace.FC2;
 
   //Temp Back Faces
   char tempBackFC1 = cubeMain.backFace.FC1;
@@ -589,7 +581,7 @@ void loop(){
   mainCube.downFace.Fe4 = 'Y';
   mainCube.downFace.C = 'Y';
 
-  moveRPrime(mainCube);
+  moveUpPrime(mainCube);
   printFace(mainCube.frontFace);
   printFace(mainCube.rightFace);
   printFace(mainCube.leftFace);
