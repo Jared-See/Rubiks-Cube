@@ -549,6 +549,73 @@ rubiksCube moveFront(rubiksCube& cubeMain){
 
 
 
+rubiksCube moveFrontPrime(rubiksCube& cubeMain){
+  //Temperary Vairables
+  //Temp Right Faces
+  char tempRightFC1 = cubeMain.rightFace.FC1;
+  char tempRightFe4 = cubeMain.rightFace.Fe4;
+  char tempRightFC4 = cubeMain.rightFace.FC4;
+ 
+  //Temp Left Faces
+  char tempLeftFC2 = cubeMain.leftFace.FC2;
+  char tempLeftFe2 = cubeMain.leftFace.Fe2;
+  char tempLeftFC3 = cubeMain.leftFace.FC3;
+
+
+  //Temp Down Faces
+  char tempDownFC1 = cubeMain.downFace.FC1;
+  char tempDownFe1 = cubeMain.downFace.Fe1;
+  char tempDownFC2 = cubeMain.downFace.FC2;
+
+  //Temp UP Faces
+  char tempUpFC4 = cubeMain.upFace.FC4;
+  char tempUpFe3 = cubeMain.upFace.Fe3;
+  char tempUpFC3 = cubeMain.upFace.FC3;
+
+  //Temp front Face
+  char tempFrontFC1 = cubeMain.frontFace.FC1;
+  char tempFrontFe1 = cubeMain.frontFace.Fe1;
+  char tempFrontFC2 = cubeMain.frontFace.FC2;
+  char tempFrontFe4 = cubeMain.frontFace.Fe4;
+  char tempFrontFe2 = cubeMain.frontFace.Fe2;
+  char tempFrontFC4 = cubeMain.frontFace.FC4;
+  char tempFrontFe3 = cubeMain.frontFace.Fe3;
+  char tempFrontFC3 = cubeMain.frontFace.FC3;
+
+  //Changes to the Up face
+  cubeMain.upFace.FC4 = tempRightFC1;
+  cubeMain.upFace.Fe3 = tempRightFe4;
+  cubeMain.upFace.FC3 = tempRightFC4;
+
+  //Changes to the left face
+  cubeMain.leftFace.FC3 = tempUpFC4;
+  cubeMain.leftFace.Fe2 = tempUpFe3;
+  cubeMain.leftFace.FC2 = tempUpFC3;
+
+  //Changes to the down face
+  cubeMain.downFace.FC1 = tempLeftFC2;
+  cubeMain.downFace.Fe1 = tempLeftFe2;
+  cubeMain.downFace.FC2 = tempLeftFC3;
+
+  //Changes to the right face
+  cubeMain.rightFace.FC1 = tempDownFC2;
+  cubeMain.rightFace.Fe4 = tempDownFe1;
+  cubeMain.rightFace.FC4 = tempDownFC1; 
+
+  //Changes to the front face
+  cubeMain.frontFace.FC1 = tempFrontFC2;
+  cubeMain.frontFace.Fe1 = tempFrontFe2;
+  cubeMain.frontFace.FC2 = tempFrontFC3;
+  cubeMain.frontFace.Fe4 = tempFrontFe1;
+  cubeMain.frontFace.Fe2 = tempFrontFe3;
+  cubeMain.frontFace.FC4 = tempFrontFC1;
+  cubeMain.frontFace.Fe3 = tempFrontFe4;
+  cubeMain.frontFace.FC3 = tempFrontFC4;
+  return cubeMain;
+}
+
+
+
 
 void printFace(cubeFace cubeMainFace){
   char face[3][3];
