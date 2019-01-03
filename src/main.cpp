@@ -725,30 +725,30 @@ rubiksCube moveDownPrime(rubiksCube& cubeMain){
   cubeMain.backFace.FC3 = tempLeftFC3;
 
   //Changes to the left face            
-  cubeMain.leftFace.FC4 = tempBackFC4;
-  cubeMain.leftFace.Fe3 = tempBackFe3;    
-  cubeMain.leftFace.FC3 = tempBackFC3;
+  cubeMain.leftFace.FC4 = tempFrontFC4;
+  cubeMain.leftFace.Fe3 = tempFrontFe3;    
+  cubeMain.leftFace.FC3 = tempFrontFC3;
   
 
   //Changes to the Front face
-  cubeMain.frontFace.FC4 = tempLeftFC4;
-  cubeMain.frontFace.Fe3 = tempLeftFe3;
-  cubeMain.frontFace.FC3 = tempLeftFC3;
+  cubeMain.frontFace.FC4 = tempRightFC4;
+  cubeMain.frontFace.Fe3 = tempRightFe3;
+  cubeMain.frontFace.FC3 = tempRightFC3;
 
   //Changes to the right face
-  cubeMain.rightFace.FC4 = tempFrontFC4;
-  cubeMain.rightFace.Fe3 = tempFrontFe3;
-  cubeMain.rightFace.FC3 = tempFrontFC3; 
+  cubeMain.rightFace.FC4 = tempBackFC4;
+  cubeMain.rightFace.Fe3 = tempBackFe3;
+  cubeMain.rightFace.FC3 = tempBackFC3; 
 
   //Changes to the Down face
-  cubeMain.downFace.FC1 = tempDownFC4;
-  cubeMain.downFace.Fe1 = tempDownFe4;
-  cubeMain.downFace.FC2 = tempDownFC1;
-  cubeMain.downFace.Fe4 = tempDownFe3;
-  cubeMain.downFace.Fe2 = tempDownFe1;
-  cubeMain.downFace.FC4 = tempDownFC3;
-  cubeMain.downFace.Fe3 = tempDownFe2;
-  cubeMain.downFace.FC3 = tempDownFC2;
+  cubeMain.downFace.FC1 = tempDownFC2;
+  cubeMain.downFace.Fe1 = tempDownFe2;
+  cubeMain.downFace.FC2 = tempDownFC3;
+  cubeMain.downFace.Fe4 = tempDownFe1;
+  cubeMain.downFace.Fe2 = tempDownFe3;
+  cubeMain.downFace.FC4 = tempDownFC1;
+  cubeMain.downFace.Fe3 = tempDownFe4;
+  cubeMain.downFace.FC3 = tempDownFC4;
   return cubeMain;
 }
 
