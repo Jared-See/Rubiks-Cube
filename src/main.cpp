@@ -779,7 +779,34 @@ void printFace(cubeFace cubeMainFace){
 
 
 
+rubiksCube whiteCrossUpFaceCheckerFe1(rubiksCube& cubeMain){ //This function is responsible for locating a white edge and placing it properly
+  if(upFace.Fe1 == 'W'){//If there is a white piece on the top already in the Fe1 spot
+    if(backFace.Fe1 == backFace.C){//
+        //The piece is in place
+        return cubeMain;
+    } else{
+        //Moves the piece to the Front(Facing you but stil on top)
+        rotateL(cubeMain);
+        rotateL(cubeMain);
 
+        //Move the piece to the bottom of the cube
+        moveFront(cubeMain);
+        moveFront(cubeMain);
+
+        //Move the piece ot the correct face
+        while(frontFace.Fe3 != frontFace.C){ //A loop to put the peice on the correct face
+          moveDown(cubeMain);
+          rotateR(cubeMain);
+        }
+
+        //Places the piece in the correct spot
+        moveFront(cubeMain);
+        moveFront(cubeMain);
+    }//End if not in place
+  }//End Case 1
+
+  return cubeMain;
+}
 //Main Code Loop
 void loop(){
   //Creates the Main Rubiks cube
@@ -793,74 +820,5 @@ void loop(){
   mainCube.upFace = upFace;
   mainCube.frontFace = frontFace;
 
-  mainCube.frontFace.FC1 = 'R';
-  mainCube.frontFace.FC2 = 'R';
-  mainCube.frontFace.FC3 = 'R';
-  mainCube.frontFace.FC4 = 'R';
-  mainCube.frontFace.Fe1 = 'R';
-  mainCube.frontFace.Fe2 = 'R';
-  mainCube.frontFace.Fe3 = 'R';
-  mainCube.frontFace.Fe4 = 'R';
-  mainCube.frontFace.C = 'R';
-
-  mainCube.rightFace.FC1 = 'B';
-  mainCube.rightFace.FC2 = 'B';
-  mainCube.rightFace.FC3 = 'B';
-  mainCube.rightFace.FC4 = 'B';
-  mainCube.rightFace.Fe1 = 'B';
-  mainCube.rightFace.Fe2 = 'B';
-  mainCube.rightFace.Fe3 = 'B';
-  mainCube.rightFace.Fe4 = 'B';
-  mainCube.rightFace.C = 'B';
-
-  
-  mainCube.leftFace.FC1 = 'G';
-  mainCube.leftFace.FC2 = 'G';
-  mainCube.leftFace.FC3 = 'G';
-  mainCube.leftFace.FC4 = 'G';
-  mainCube.leftFace.Fe1 = 'G';
-  mainCube.leftFace.Fe2 = 'G';
-  mainCube.leftFace.Fe3 = 'G';
-  mainCube.leftFace.Fe4 = 'G';
-  mainCube.leftFace.C = 'G';
-
-  mainCube.backFace.FC1 = 'O';
-  mainCube.backFace.FC2 = 'O';
-  mainCube.backFace.FC3 = 'O';
-  mainCube.backFace.FC4 = 'O';
-  mainCube.backFace.Fe1 = 'O';
-  mainCube.backFace.Fe2 = 'O';
-  mainCube.backFace.Fe3 = 'O';
-  mainCube.backFace.Fe4 = 'O';
-  mainCube.backFace.C = 'O';
-
-  mainCube.upFace.FC1 = 'W';
-  mainCube.upFace.FC2 = 'W';
-  mainCube.upFace.FC3 = 'W';
-  mainCube.upFace.FC4 = 'W';
-  mainCube.upFace.Fe1 = 'W';
-  mainCube.upFace.Fe2 = 'W';
-  mainCube.upFace.Fe3 = 'W';
-  mainCube.upFace.Fe4 = 'W';
-  mainCube.upFace.C = 'W';
-
-  mainCube.downFace.FC1 = 'Y';
-  mainCube.downFace.FC2 = 'Y';
-  mainCube.downFace.FC3 = 'Y';
-  mainCube.downFace.FC4 = 'Y';
-  mainCube.downFace.Fe1 = 'Y';
-  mainCube.downFace.Fe2 = 'Y';
-  mainCube.downFace.Fe3 = 'Y';
-  mainCube.downFace.Fe4 = 'Y';
-  mainCube.downFace.C = 'Y';
-
-  moveUpPrime(mainCube);
-  printFace(mainCube.frontFace);
-  printFace(mainCube.rightFace);
-  printFace(mainCube.leftFace);
-  printFace(mainCube.backFace);
-  printFace(mainCube.upFace);
-  printFace(mainCube.downFace);
-  delay(1000000);
-  
+ 
 }
