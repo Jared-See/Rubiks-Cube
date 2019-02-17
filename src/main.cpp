@@ -779,34 +779,78 @@ void printFace(cubeFace cubeMainFace){
 
 
 
-rubiksCube whiteCrossUpFaceCheckerFe1(rubiksCube& cubeMain){ //This function is responsible for locating a white edge and placing it properly
-  if(upFace.Fe1 == 'W'){//If there is a white piece on the top already in the Fe1 spot
-    if(backFace.Fe1 == backFace.C){//
-        //The piece is in place
-        return cubeMain;
-    } else{
-        //Moves the piece to the Front(Facing you but stil on top)
-        rotateL(cubeMain);
-        rotateL(cubeMain);
+rubiksCube whiteCrossUpperFaceOneTime (rubiksCube cubeMain){
+  //Start by checking for any white crosses on the top of the cube
+  bool whiteTop = false;
+  while(whiteTop == false){
+    //Code for the FE1 Position
+    if(cubeMain.upFace.Fe1 == 'W'){
+      rotateL(cubeMain);
+      rotateL(cubeMain);
+      while(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){
+          moveUp(cubeMain);
+          rotateL(cubeMain);
+      }
+      if(cubeMain.frontFace.C == cubeMain.frontFace.Fe1){
+        whiteTop == true;
+      }
+    }
 
-        //Move the piece to the bottom of the cube
-        moveFront(cubeMain);
-        moveFront(cubeMain);
+    
+    
+    
+    //Code for the FE2 Position
+    if(cubeMain.upFace.Fe2 == 'W'){
+      rotateL(cubeMain);
+      while(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){
+          moveUp(cubeMain);
+          rotateL(cubeMain);
+      }
+      if(cubeMain.frontFace.C == cubeMain.frontFace.Fe1){
+        whiteTop == true;
+      }
+    }  
 
-        //Move the piece ot the correct face
-        while(frontFace.Fe3 != frontFace.C){ //A loop to put the peice on the correct face
-          moveDown(cubeMain);
-          rotateR(cubeMain);
-        }
 
-        //Places the piece in the correct spot
-        moveFront(cubeMain);
-        moveFront(cubeMain);
-    }//End if not in place
-  }//End Case 1
+
+    //Code for the FE3 Position
+    if(cubeMain.upFace.Fe3 == 'W'){
+      while(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){
+          moveUp(cubeMain);
+          rotateL(cubeMain);
+      }
+      if(cubeMain.frontFace.C == cubeMain.frontFace.Fe1){
+        whiteTop == true;
+      }
+    }
+
+
+
+
+    //Code for the FE4 Position
+    if(cubeMain.upFace.Fe4 == 'W'){
+      rotateR(cubeMain);
+      while(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){
+          moveUp(cubeMain);
+          rotateL(cubeMain);
+      }
+      if(cubeMain.frontFace.C == cubeMain.frontFace.Fe1){
+        whiteTop == true;
+      }
+    }              
+  }
+  
+  
+
+
 
   return cubeMain;
 }
+
+
+
+
+
 //Main Code Loop
 void loop(){
   //Creates the Main Rubiks cube
