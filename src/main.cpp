@@ -778,71 +778,52 @@ void printFace(cubeFace cubeMainFace){
 
 
 
+//This function removes all in correctly placed white edge pieces from the white side of the cube
+rubiksCube whiteCrossClear (rubiksCube cubeMain){ 
 
-rubiksCube whiteCrossUpperFaceOneTime (rubiksCube cubeMain){
-  //Start by checking for any white crosses on the top of the cube
-  bool whiteTop = false;
-  while(whiteTop == false){
-    //Code for the FE1 Position
-    if(cubeMain.upFace.Fe1 == 'W'){
-      rotateL(cubeMain);
-      rotateL(cubeMain);
-      while(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){
-          moveUp(cubeMain);
-          rotateL(cubeMain);
-      }
-      if(cubeMain.frontFace.C == cubeMain.frontFace.Fe1){
-        whiteTop == true;
-      }
-    }
+    //If there is a white peice on the top FE1 spot then this will remove it
+    if(cubeMain.upFace.Fe1 = 'W'){ //If There is a white piece in the top face in the Fe1 Spot
+      if(cubeMain.backFace.Fe1 != cubeMain.backFace.C){ // If the Piece isn't Oriented properly (You don't need to move it if it is already in place)   
+        //These two rotate statements put the piece that isn't in the correct spot facing you
+        rotateL(cubeMain);
+        rotateL(cubeMain);
 
-    
-    
-    
-    //Code for the FE2 Position
-    if(cubeMain.upFace.Fe2 == 'W'){
-      rotateL(cubeMain);
-      while(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){
-          moveUp(cubeMain);
-          rotateL(cubeMain);
-      }
-      if(cubeMain.frontFace.C == cubeMain.frontFace.Fe1){
-        whiteTop == true;
-      }
-    }  
-
-
-
-    //Code for the FE3 Position
-    if(cubeMain.upFace.Fe3 == 'W'){
-      while(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){
-          moveUp(cubeMain);
-          rotateL(cubeMain);
-      }
-      if(cubeMain.frontFace.C == cubeMain.frontFace.Fe1){
-        whiteTop == true;
+        //These rotate the piece ot the bottom
+        moveFront(cubeMain);
+        moveFront(cubeMain);
       }
     }
 
 
+    if(cubeMain.upFace.Fe2 = 'W'){ //If There is a white piece in the top face in the Fe2 Spot
+      if(cubeMain.rightFace.Fe1 != cubeMain.rightFace.C){ // If the Piece isn't Oriented properly (You don't need to move it if it is already in place)   
+        //These  rotate statement(s) put the piece that isn't in the correct spot facing you
+        rotateL(cubeMain);
 
-
-    //Code for the FE4 Position
-    if(cubeMain.upFace.Fe4 == 'W'){
-      rotateR(cubeMain);
-      while(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){
-          moveUp(cubeMain);
-          rotateL(cubeMain);
+        //These rotate the piece ot the bottom
+        moveFront(cubeMain);
+        moveFront(cubeMain); 
       }
-      if(cubeMain.frontFace.C == cubeMain.frontFace.Fe1){
-        whiteTop == true;
+    }
+
+    if(cubeMain.upFace.Fe3 = 'W'){ //If There is a white piece in the top face in the Fe3 Spot
+      if(cubeMain.frontFace.Fe1 != cubeMain.frontFace.C){ // If the Piece isn't Oriented properly (You don't need to move it if it is already in place)   
+        //These rotate the piece ot the bottom
+        moveFront(cubeMain);
+        moveFront(cubeMain); 
       }
-    }              
-  }
-  
-  
+    }
 
+    if(cubeMain.upFace.Fe2 = 'W'){ //If There is a white piece in the top face in the Fe4 Spot
+      if(cubeMain.rightFace.Fe1 != cubeMain.rightFace.C){ // If the Piece isn't Oriented properly (You don't need to move it if it is already in place)   
+        //These  rotate statement(s) put the piece that isn't in the correct spot facing you
+        rotateR(cubeMain);
 
+        //These rotate the piece ot the bottom
+        moveFront(cubeMain);
+        moveFront(cubeMain); 
+      }
+    }
 
   return cubeMain;
 }
@@ -863,6 +844,8 @@ void loop(){
   mainCube.rightFace = rightFace;
   mainCube.upFace = upFace;
   mainCube.frontFace = frontFace;
+
+
 
  
 }
